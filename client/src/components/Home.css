@@ -1,0 +1,9 @@
+.main-home {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.area-countries {
+    width: 100%;
+}

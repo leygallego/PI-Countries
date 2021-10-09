@@ -15,13 +15,14 @@ async function getCountries(req, res, next) {
             axios.get("https://restcountries.com/v3/all")
             .then(pais=>{
                 return Promise.all(
-                    pais.map(e=>{
+                    pais.data.map(e=>{
+                            // console.log("Mapeando", e.capital[0]);
                             return Countries.create({
                                 id: e.cca3,
-                                name: e.name,
+                                name: e.name.common,
                                 flag: e.flags[1],
                                 continent: e.region,
-                                capital: e.capital,
+                                capital: JSON.stringify(e.capital),
                                 subregion: e.subregion,
                                 area: e.area,
                                 population: e.population

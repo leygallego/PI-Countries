@@ -23,19 +23,19 @@ module.exports = (sequelize) => {
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     subregion: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     area: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     population: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };
