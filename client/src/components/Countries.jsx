@@ -14,12 +14,14 @@ function Countries({countries, loading}) {
             <div className="container-countries">
         {
                 countries.map(country=>{
-                   return <div key={country.id}>
+                   return <div className="imagenes-cardCountries" key={country.id}>
 
                        <img src={country.flag} alt={country.name} />
                        <div>
                        {country.name}
-
+                       </div>
+                       <div>
+                           {country.continent}
                        </div>
                     </div>
                 })
