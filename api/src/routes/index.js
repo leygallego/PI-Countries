@@ -6,11 +6,13 @@ const { Router } = require('express');
 const router = Router();
 
 const country = require('./countries')
+const activities = require('./activities')
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/countries", country);
+router.use("/activities", activities)
 
 
 module.exports = router;

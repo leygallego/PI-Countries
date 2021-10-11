@@ -17,15 +17,20 @@ async function getCountries(req, res, next) {
                 return Promise.all(
                     pais.data.map(e=>{
                             // console.log("Mapeando", e.capital[0]);
-                            return Countries.create({
-                                id: e.cca3,
-                                name: e.name.common,
-                                flag: e.flags[1],
-                                continent: e.region,
-                                capital: JSON.stringify(e.capital),
-                                subregion: e.subregion,
-                                area: e.area,
-                                population: e.population
+                            return Countries.findOrCreate({
+                                where: {
+                                    id: e.cca3,
+                                    name: e.name.common,
+                                    flag: e.flags[1],
+                                    continent: e.region,
+                                    capital: JSON.stringify(e.capital),
+                                    subregion: e.subregion,
+                                    area: e.area,
+                                    population: e.population   
+                                },
+                                include:{
+                                    model: Activities
+                                }
                             })
                     })
                 ).then(respuesta=>{
@@ -41,7 +46,37 @@ async function getCountries(req, res, next) {
     }
 }
 
+
+async function getCountryByID(req, res, next) {
+
+    try {
+        
+        const { id } = req.params;
+        let countryInfo;
+        if (id) {
+            countryInfo = await Countries.findOne({
+                where: {
+                    id: id
+                },
+                include: {
+                    model: Activities
+                }
+            })
+            console.log("información", countryInfo);
+            res.send(countryInfo)
+        } else {
+            res.send("No hay país con ese id")
+        }
+
+    } catch (error) {
+
+        next(error)
+    }
+    
+}
+
 module.exports = {
-    getCountries
+    getCountries,
+    getCountryByID
 }
 
