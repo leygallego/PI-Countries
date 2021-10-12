@@ -26,20 +26,31 @@ async function getActivities(req, res, next) {
 
     try {
         const { name, difficulty, duration, season, countries } = req.body;
+        let newActivity = {
+            name,
+            difficulty,
+            duration,
+            season
+        }
+        Activities.create(newActivity)
+        .then(activity => {
+            activity.addCountries(countries)
+            res.json({...activity, countries})
+        })
 
-    const newActivity = await Activities.create({
-        name,
-        difficulty,
-        duration,
-        season
-    })
+    // const newActivity = await Activities.create({
+    //     name,
+    //     difficulty,
+    //     duration,
+    //     season
+    // })
 
     // countries.forEach(element=>{
     //     newActivity.addCountries(element)
     // })
-    newActivity.addCountries(countries)
+    // newActivity.addCountries(countries)
 
-    res.send(newActivity)
+    // res.send(newActivity)
         
     } catch (error) {
         next(error)
