@@ -1,5 +1,7 @@
 import React from 'react';
 import './Countries.css';
+import { NavLink } from 'react-router-dom';
+
 
 function Countries({countries, loading}) {
     if (loading) {
@@ -15,8 +17,10 @@ function Countries({countries, loading}) {
         {
                 countries.map(country=>{
                    return <div className="imagenes-cardCountries" key={country.id}>
-
+                       <NavLink exact to={`/detalle/${country.id}`} >
                        <img src={country.flag} alt={country.name} />
+                       </NavLink>
+
                        <div>
                        {country.name}
                        </div>
