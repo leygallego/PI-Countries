@@ -28,6 +28,8 @@ function Detalle() {
                     <p>Subregión {countryDetalle.subregion}</p>
                     <p>Área Km cuadrados {countryDetalle.area}</p>
                     <p>Población {countryDetalle.population}</p>
+                    <p>Continente {countryDetalle.continent}</p>
+
                     <div>{countryDetalle.activities.map((e, index)=>{
                         return (
                             <div key={index} >

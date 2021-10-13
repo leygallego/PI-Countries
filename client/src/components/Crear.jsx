@@ -14,7 +14,7 @@ function Crear() {
 
     useEffect(() => {
         dispatch(dbCountriesGet())
-    },[dispatch])
+    }, [dispatch])
 
     const [values, setValues] = useState({
         name: "",
@@ -24,40 +24,40 @@ function Crear() {
         countries: []
     });
 
-    const handleOnChange = (e)=>{
+    const handleOnChange = (e) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value
         })
     }
 
-    const onSubmit = (e)=>{
+    const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createActivities(values));
         setValues({
             name: "",
-        difficulty: 0,
-        duration: "",
-        season: "",
-        countries: []
+            difficulty: 0,
+            duration: "",
+            season: "",
+            countries: []
 
         })
     }
 
-    const handleOnChangeSelect = (e)=>{
-        if(values.countries.includes(e.target.value)){
-         setValues({
-             ...values,
-             countries: values.countries.filter(ep=> ep !== e.target.value)
-         })
-        }else{
+    const handleOnChangeSelect = (e) => {
+        if (values.countries.includes(e.target.value)) {
+            setValues({
+                ...values,
+                countries: values.countries.filter(ep => ep !== e.target.value)
+            })
+        } else {
             setValues({
                 ...values,
                 countries: [...values.countries, e.target.value]
             })
         }
-         
-     }
+
+    }
 
 
 
@@ -65,37 +65,44 @@ function Crear() {
         <div>
             <h1 className="logo">Crea <span>Actividades</span> y asocialas al país que corresponda</h1>
 
-                <div className="crear-wraper">
-                    <div className="crear-form">
-                        <form onSubmit={onSubmit}>
-                            <label >Nombre </label>
-                            <input className="crear-inputNombre" name="name" value={values.name} onChange={handleOnChange}
-                            placeholder="Escribe el nombre de la actividad"  />
-                            <label >Dificultad (de 1 a 5) </label>
-                            <input className="crear-inputNombre" name="difficulty" value={values.difficulty} onChange={handleOnChange}
-                            placeholder="nivel de dificultad (de 1 a 5)"  />
-                            <label >Duración </label>
-                            <input className="crear-inputNombre" name="duration" value={values.duration} onChange={handleOnChange}
-                            placeholder="Duración de la actividad (Días)"  />
-                            <label >Temporada </label>
-                            <input className="crear-inputNombre" name="season" value={values.season} onChange={handleOnChange}
-                            placeholder="Temporada (Verano, otoño, invierno o primavera)"  />
-                        </form>
+            <div className="crear-wraper">
+                <div className="crear-form">
+                    <form onSubmit={onSubmit}>
+                        <label >Nombre </label>
+                        <input className="crear-inputNombre" name="name" value={values.name} onChange={handleOnChange}
+                            placeholder="Escribe el nombre de la actividad" />
+                        <label >Dificultad (de 1 a 5) </label>
+                        <input className="crear-inputNombre" name="difficulty" value={values.difficulty} onChange={handleOnChange}
+                            placeholder="nivel de dificultad (de 1 a 5)" />
+                        <label >Duración </label>
+                        <input className="crear-inputNombre" name="duration" value={values.duration} onChange={handleOnChange}
+                            placeholder="Duración de la actividad (Días)" />
+                        <label >Temporada </label>
+                        <input className="crear-inputNombre" name="season" value={values.season} onChange={handleOnChange}
+                            placeholder="Temporada (Verano, otoño, invierno o primavera)" />
+                        <h2 className="crear-seleccionTitulo">Seleccionar Pais</h2>
                         <div className="select-crear">
-                        <select onChange={handleOnChangeSelect} name="countries" multiple>
-                            {
-                                 paises.map((e, i)=>{
-                                    return <option value={e.id} key={i}>{e.name}</option>
-                                })
-                            }
-                        </select>
-                        
-                        </div>
-                     
-                            <button className="myButton-crear" type="submit" >CREAR</button>
+                            <select onChange={handleOnChangeSelect} name="countries" multiple>
+                                {
+                                    paises.map((e, i) => {
+                                        return <option value={e.id} key={i}>{e.name}</option>
+                                    })
+                                }
+                            </select>
 
-                    </div>
+                        </div>
+                        <div>
+                        <button className="myButton-crear" type="submit" >CREAR</button>
+                        </div>
+
+                        
+
+
+                    </form>
+
+
                 </div>
+            </div>
 
         </div>
     )

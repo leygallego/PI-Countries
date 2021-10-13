@@ -35,7 +35,7 @@ async function getActivities(req, res, next) {
         Activities.create(newActivity)
         .then(activity => {
             activity.addCountries(countries)
-            res.json({...activity, countries})
+            res.json(activity)
         })
 
     // const newActivity = await Activities.create({

@@ -1,4 +1,4 @@
-const { Countries, Activities } = require('../db');
+const { Countries, Activities, Op } = require('../db');
 const axios = require('axios');
 var Sequelize = require("sequelize");
 
@@ -87,9 +87,32 @@ async function countryFromDB(req, res, next) {
     
 }
 
+async function searchCountry(req, res, next){
+    try {
+        const { name } = req.query;
+        let pais = await Countries.findAll({
+            where: {
+                [Sequelize.Op.or]: [
+                    {
+                        name: {
+                            [Sequelize.Op.iLike]: `%${name}%`,
+                        }
+                    }
+                ]
+            }
+        })
+        // console.log("Busqueda",pais);
+        res.send(pais)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     getCountries,
     getCountryByID,
-    countryFromDB
+    countryFromDB,
+    searchCountry
 }
 

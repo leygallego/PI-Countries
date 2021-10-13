@@ -5,6 +5,11 @@ export const GET_COUNTRIES_BY_ID = 'GET_COUNTRIES_BY_ID';
 export const QUIT_COUNTRIES_BY_ID = 'QUIT_COUNTRIES_BY_ID';
 export const DB_COUNTRIES_GET = 'DB_COUNTRIES_GET';
 export const CREATE_ACTIVITIES = 'CREATE_ACTIVITIES';
+// export const GET_COUNTRIES_BY_NAME = 'GET_COUNTRY_BY_NAME'
+export const FETCH_COUNTRY_REQUEST = 'FETCH_COUNTRY_REQUEST';
+export const FETCH_COUNTRY_SUCCESS = 'FETCH_COUNTRY_SUCCESS';
+export const FETCH_COUNTRY_FAILURE = 'FETCH_COUNTRY_FAILURE';
+
 
 
 
@@ -50,16 +55,64 @@ export function dbCountriesGet(){
     }
 }
 
-export function createActivities(payload) {
+
+export function createActivities(payload){
     return async (dispatch)=>{
         dispatch({
-            type: CREATE_ACTIVITIES
+            type: CREATE_ACTIVITIES,
         });
-    await axios.post("http://localhost:3001/activities/add")
-    .then((response)=>{
-        console.log("Actividad registrada correctamente");
-    })
+        await axios.post('http://localhost:3001/activities/add', payload)
+        .then((response)=>{
+            console.log("registrado correctamente");
+            console.log(response);
+        })
     }
-    
-    
+
 }
+
+// export function getCountryByName(name) {
+//     return async dispatch => {
+//         return await axios.get(`http://localhost:3001/countries/search?name=${name}`)
+//         .then(response => dispatch({
+//             type: GET_COUNTRIES_BY_NAME,
+//             payload: response.data
+//         }))
+//     }
+    
+// }
+
+export const fetchCountryRequest = ()=>{
+    return {
+        type: FETCH_COUNTRY_REQUEST
+    }
+}
+
+export const fetchCountrySuccess = (Country) => {
+    return {
+        type: FETCH_COUNTRY_SUCCESS,
+        payload: Country
+    }
+}
+
+export const fetchCountryFailure = (error) => {
+    return {
+        type: FETCH_COUNTRY_FAILURE,
+        payload: error
+    }
+}
+
+ const fetchCountry = (name) => {
+    return (dispatch) => {
+        dispatch(fetchCountryRequest());
+        axios.get(`http://localhost:3001/countries/search?name=${name}`)
+        .then(response => {
+            dispatch(fetchCountrySuccess([response.data]));
+        })
+        .catch(error => {
+            dispatch(fetchCountryFailure("No se encontró el pokemón"))
+        })
+
+    }
+}
+
+export default fetchCountry
