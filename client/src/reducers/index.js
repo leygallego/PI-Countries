@@ -1,9 +1,10 @@
-import {  GET_COUNTRIES, GET_COUNTRIES_BY_ID, QUIT_COUNTRIES_BY_ID } from "../actions";
+import {  CREATE_ACTIVITIES, DB_COUNTRIES_GET, GET_COUNTRIES, GET_COUNTRIES_BY_ID, QUIT_COUNTRIES_BY_ID } from "../actions";
 
 const initialState={
 
     countries: [],
     country: [],
+    dbCountries: []
    
 }
 
@@ -26,7 +27,14 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 country: action.payload
             }      
-           
+        case DB_COUNTRIES_GET:
+            return {
+                ...state,
+                dbCountries: action.payload
+            } 
+        case CREATE_ACTIVITIES:
+            return{
+            }      
             
     
         default: return state

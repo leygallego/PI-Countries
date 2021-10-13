@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Landing from './components/Landing';
 import Detalle from './components/Detalle';
+import Crear from './components/Crear';
 
 
 function App() {
@@ -15,11 +16,8 @@ function App() {
       <Route exact path="/" component={Landing}></Route>
       <Route exact path="/home" component={Home}></Route>
       <Route exact path="/detalle/:id" render={({ match }) => <Detalle id={match.params.id}/>} ></Route>
+      <Route exact path="/crear" component={Crear}></Route>
 
-
-      {/* <Route exact path="/crear" component={Crear}></Route>
-
-      <Route exact path="/detalle/:id" component={Detalle}></Route> */}
 
 
 

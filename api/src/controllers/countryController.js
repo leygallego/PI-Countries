@@ -75,8 +75,21 @@ async function getCountryByID(req, res, next) {
     
 }
 
+async function countryFromDB(req, res, next) {
+    try {
+       let dbCountries = await Countries.findAll()
+       .then(dbPaises =>{
+           res.send(dbPaises)
+       })
+    } catch (error) {
+        
+    }
+    
+}
+
 module.exports = {
     getCountries,
-    getCountryByID
+    getCountryByID,
+    countryFromDB
 }
 
