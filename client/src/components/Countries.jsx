@@ -1,18 +1,33 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './Countries.css';
 import { NavLink } from 'react-router-dom';
 
 
-function Countries({countries, loading}) {
+function Countries({countries, loading, term, searchKeyWord}) {
+    // console.log({countries, loading, term, searchKeyWord});
+    const inputEl = useRef("")
+
     if (loading) {
         return <h2>Loading...</h2>
 
     }
 
-
+    const getSearchTerm = () => {
+        searchKeyWord(inputEl.current.value);
+    }
     return (
         <div className="main-cardCountries">
             <h1>ESTE ES EL COMPONENTE DE PAÍSES</h1>
+
+            <div className="busqueda-countries">
+                <input 
+                ref={inputEl}
+                type="text" 
+                placeholder="Busca un país"
+                value={term}
+                onChange={getSearchTerm}
+                />
+            </div>
             <div className="container-countries">
         {
                 countries.map(country=>{

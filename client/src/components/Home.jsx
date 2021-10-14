@@ -18,11 +18,31 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage] = useState(9);
 
+    const [searchTerm, setSearchTerm] = useState("")
+    const [searchResults, setSearchResults] = useState ([])
+
+
     useEffect(()=>{
         setLoading(true)
         dispatch(getCountries())
         setLoading(false)
     },[dispatch])
+
+    const searchHandler = (searchTerm)=>{
+        setSearchTerm(searchTerm)
+        if (searchTerm !== "") {
+            const countrySelected = selector.filter((country)=>{
+             return   Object.values(country)
+                .join(" ")
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            });
+            setSearchResults(countrySelected)
+        }  
+        else {
+            setSearchResults(currentCountries)
+        }   
+    }
 
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
@@ -33,7 +53,12 @@ function Home() {
     return (
         <div>
         <h1>ESTE ES EL HOME</h1>
-        <Countries countries={currentCountries} loading={loading} />
+        <Countries 
+        countries={ searchTerm.length < 1 ? currentCountries : searchResults} 
+        loading={loading} 
+        term={searchTerm}
+        searchKeyWord={searchHandler}
+        />
         <Pagination 
             countriesPerPage={countriesPerPage}
             totalcountries={selector.length}
