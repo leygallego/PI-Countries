@@ -109,7 +109,7 @@ export const fetchCountryFailure = (error) => {
             dispatch(fetchCountrySuccess([response.data]));
         })
         .catch(error => {
-            dispatch(fetchCountryFailure("No se encontró el pokemón"))
+            dispatch(fetchCountryFailure("No se encontró el País", error))
         })
 
     }

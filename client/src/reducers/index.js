@@ -7,10 +7,7 @@ const initialState={
     dbCountries: [],
     countryName: [],
     loading: false,
-    error: '',
-
-
-   
+    error: '',   
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -61,15 +58,7 @@ export default function rootReducer(state = initialState, action) {
                  countryName: [],
                  error: action.payload
              } 
-         
-
-        // case GET_COUNTRIES_BY_NAME:
-        //     return{
-        //         ...state,
-        //         countryName: action.payload
-        //     }          
-            
-    
+                 
         default: return state
     }
     
