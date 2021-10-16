@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 
 function Countries({countries, loading, term, searchKeyWord}) {
-    // console.log({countries, loading, term, searchKeyWord});
     const inputEl = useRef("")
 
     if (loading) {
@@ -15,9 +14,11 @@ function Countries({countries, loading, term, searchKeyWord}) {
     const getSearchTerm = () => {
         searchKeyWord(inputEl.current.value);
     }
+
+  
+
     return (
         <div className="main-cardCountries">
-            <h1>ESTE ES EL COMPONENTE DE PAÍSES</h1>
 
             <div className="busqueda-countries">
                 <input 

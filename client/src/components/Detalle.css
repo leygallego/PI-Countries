@@ -1,0 +1,65 @@
+
+
+.main-cardDetail {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  img{
+    width: 200px; height: 200px;
+  
+  }
+
+  
+
+
+  .container-detail{
+    display: grid;
+    /* grid-template-rows: 100px 100px; */
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+    font-family: Comic Sans MS;
+    margin-left: 0%;
+  }    
+
+  .container-basicDetail h1{
+      margin-left: 5%;
+      font-size: 40px;
+  }
+
+  .container-container-especificDetail{
+    display: grid;
+    /* grid-template-rows: 100px 100px; */
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+    font-family: Comic Sans MS;
+  }   
+
+  /* .container-container-activitiesDetail{
+    display: grid;
+    grid-template-rows: 100px 100px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+    font-family: Comic Sans MS;
+  }    */
+
+  /* .imagenes-cardCountries{
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    box-shadow: 0px 1px 5px 0px;
+  } */

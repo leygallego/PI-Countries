@@ -1,7 +1,7 @@
 
 
 .main-cardCountries {
-    margin-top: 50px;
+    margin-top: 150px;
   }
   
   img{
@@ -27,4 +27,25 @@
     border-radius: 4px;
     padding: .5rem;
     box-shadow: 0px 1px 5px 0px;
+  }
+
+  .busqueda-countries{
+    margin-bottom: 3%;
+    margin-left: 25%;
+    width: 50%;
+    height: 55px;
+  }
+
+  .busqueda-countries input{
+    background-color: rgba(0, 0, 0, 0.383);
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    width: 25%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 75%;
   }

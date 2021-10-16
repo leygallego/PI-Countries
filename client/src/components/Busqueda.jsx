@@ -21,21 +21,27 @@ function Busqueda() {
     }
 
     return (
-        <div>
-            <h1>Este es el componente de BUSQUEDA</h1>
+        <div className="main-containerBusqueda">
+            <div className="busqueda-contenedor">
+                <label htmlFor="buscar_pais" className="busqueda-label">Buscar País por Nombre</label>
+                <div className="inputSearchZone">
+                    <input 
+                    placeholder="Ingresa el nombre del Pais"
+                    type="text" 
+                    className="busqueda-input" 
+                    id="buscar_pais" 
+                    value={countryName}
+                    onChange={handleOnChange}
+                    />
+                </div>
+                
+                <div className="myButton-busquedaExacta">
+                <button className="busqueda-button" onClick={handleOnClick} >Enviar</button>
+                </div>
 
-            <label htmlFor="buscar_pais" className="busqueda-label">Buscar País por Nombre</label>
-            <input 
-            placeholder="Ingresa el nombre del Pais"
-            type="text" 
-            className="busqueda-input" 
-            id="buscar_pais" 
-            value={countryName}
-            onChange={handleOnChange}
-             />
-             <div className="container-busquedaButton">
-             <button className="busqueda-button" onClick={handleOnClick} >Enviar</button>
-             </div>
+            </div>
+
+            
 
              <div className="main-resultado">
 
