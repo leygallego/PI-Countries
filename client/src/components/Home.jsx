@@ -139,7 +139,11 @@ function Home() {
             { boolean ? 
             
             <Countries
-            countries={selector}
+            countries={searchTerm.length < 1 ? currentCountries : searchResults}
+            loading={loading}
+            term={searchTerm}
+            searchKeyWord={searchHandler}
+            sort={handleSortedChange}
             /> : 
             
             <Countries
