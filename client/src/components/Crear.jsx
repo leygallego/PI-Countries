@@ -33,16 +33,16 @@ function Crear() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // dispatch(createActivities(values));
+        dispatch(createActivities(values));
         console.log("valores", values);
-        // setValues({
-        //     name: "",
-        //     difficulty: 0,
-        //     duration: "",
-        //     season: "",
-        //     countries: []
+        setValues({
+            name: "",
+            difficulty: 0,
+            duration: "",
+            season: "",
+            countries: []
 
-        // })
+        })
     }
 
     const handleOnChangeSelect = (e) => {
