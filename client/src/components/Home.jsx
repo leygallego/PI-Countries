@@ -144,7 +144,8 @@ function Home() {
             term={searchTerm}
             searchKeyWord={searchHandler}
             sort={handleSortedChange}
-            /> : 
+            /> 
+            : 
             
             <Countries
                 countries={searchTerm.length < 1 ? currentCountries : searchResults}

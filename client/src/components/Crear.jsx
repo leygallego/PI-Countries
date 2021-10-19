@@ -33,15 +33,16 @@ function Crear() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createActivities(values));
-        setValues({
-            name: "",
-            difficulty: 0,
-            duration: "",
-            season: "",
-            countries: []
+        // dispatch(createActivities(values));
+        console.log("valores", values);
+        // setValues({
+        //     name: "",
+        //     difficulty: 0,
+        //     duration: "",
+        //     season: "",
+        //     countries: []
 
-        })
+        // })
     }
 
     const handleOnChangeSelect = (e) => {
@@ -82,7 +83,7 @@ function Crear() {
                             placeholder="Temporada (Verano, otoño, invierno o primavera)" />
                         <h2 className="crear-seleccionTitulo">Seleccionar Pais</h2>
                         <div className="select-crear">
-                            <select onChange={handleOnChangeSelect} name="countries" multiple>
+                            <select onClick={handleOnChangeSelect} name="countries" multiple>
                                 {
                                     paises.map((e, i) => {
                                         return <option value={e.id} key={i}>{e.name}</option>
