@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import './Pagination.css';
 
 
 
@@ -22,7 +22,7 @@ function Pagination({countriesPerPage, totalcountries, paginate}) {
                 {
                     pageNumbers.map(number =>{
                       return  <NavLink exact to={number}>
-                            <button onClick={()=> paginate(number)}>{number}</button>
+                            <button className="myButton-pagination" onClick={()=> paginate(number)}>{number}</button>
                         </NavLink>
                     })
                 }

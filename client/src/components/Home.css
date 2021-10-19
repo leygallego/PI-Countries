@@ -7,3 +7,29 @@
 .area-countries {
     width: 100%;
 }
+
+.container-selectCountryCard{
+    display: grid;
+	grid-template-rows: auto;
+	width: 100%;
+	height: 100%;
+}
+
+.container-selectCountryCard select{
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 25%;
+    height: 55px;
+    font-family: Comic Sans MS;
+    font-size: 20px;
+    cursor: inherit;
+    line-height: inherit;
+    color: black;
+    font-weight: bold;
+	text-align: center; 
+    margin-left: 40%;
+}
+
