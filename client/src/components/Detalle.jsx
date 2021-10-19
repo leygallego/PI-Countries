@@ -10,7 +10,7 @@ function Detalle() {
     const countryDetalle = useSelector(store=> {
         return store.country
     })
-    console.log("Selector", countryDetalle);
+    // console.log("Selector", countryDetalle);
     useEffect(()=>{
         dispatch(getCountriesById(id));
         return ()=>{dispatch(quitCountriesById())}
@@ -25,28 +25,28 @@ function Detalle() {
                 countryDetalle.name ?
                 <div className="container-detail">
                     <div className="container-basicDetail">
-                    <h1>Detalle de {countryDetalle.name}</h1>
+                    <h1>Detalle de <span>{countryDetalle.name}</span> </h1>
                     <img src={countryDetalle.flag} alt={`imagen de ${countryDetalle.name}`} />
-                    <p>Código de país {countryDetalle.id}</p>
+                    <p>Código de país <span>{countryDetalle.id}</span> </p>
                     </div>
 
                     <div className="container-especificDetail">
-                    <p>Capital {countryDetalle.capital}</p>
-                    <p>Subregión {countryDetalle.subregion}</p>
-                    <p>Área Km cuadrados {countryDetalle.area}</p>
-                    <p>Población {countryDetalle.population}</p>
-                    <p>Continente {countryDetalle.continent}</p>
+                    <p>Capital <span>{countryDetalle.capital}</span> </p>
+                    <p>Subregión <span>{countryDetalle.subregion}</span> </p>
+                    <p>Área Km cuadrados <span>{countryDetalle.area}</span> </p>
+                    <p>Población <span>{countryDetalle.population}</span> </p>
+                    <p>Continente <span>{countryDetalle.continent}</span> </p>
                     </div>
                     
 
                     <div className="container-activitiesDetail">{countryDetalle.activities.map((e, index)=>{
                         return (
                             <div key={index} >
-                                <h3>Actividades</h3>
-                                <p>Nombre actividad: {e.name}</p>
-                                <p>Duración: {e.duration}</p>
-                                <p>Dificultad (de 1 a 5): {e.difficulty}</p>
-                                <p>Temporada: {e.season}</p>
+                                <h2>Actividades</h2>
+                                <p>Nombre actividad:<span>{e.name}</span> </p>
+                                <p>Duración: <span>{e.duration}</span> </p>
+                                <p>Dificultad (de 1 a 5): <span>{e.difficulty}</span> </p>
+                                <p>Temporada: <span>{e.season}</span> </p>
                             </div>
                         )
                     })}</div>

@@ -7,7 +7,7 @@ import  './Busqueda.css'
 function Busqueda() {
     const dispatch = useDispatch();
     const buscador = useSelector((state) => state.countryName)
-    // console.log("buscador", buscador[0][0].name);
+    console.log("buscador", buscador[0][0]);
 
 
     const [countryName, setCountryName] = useState('')
@@ -49,12 +49,15 @@ function Busqueda() {
              { buscador.length >= 1 && <div className="resultado-mostrado">
                 <img className="busqueda-imagen" src={buscador[0][0].flag} alt={buscador[0][0].name} />
                 { buscador.length >= 1 && <div className="resultado-mostrado">
-                <h1>{buscador[0][0].name}</h1>
-                <h1>{buscador[0][0].id}</h1>
-                <h1>{buscador[0][0].continent}</h1>
-                <h1>{buscador[0][0].subregion}</h1>
-                <h1>{buscador[0][0].area}</h1>
-                <h1>{buscador[0][0].population}</h1>
+                <h1>País: {buscador[0][0].name}</h1>
+                <h1>ID: {buscador[0][0].id}</h1>
+                <h1>Capital: {buscador[0][0].capital}</h1>
+                {/* <h1>Capital: {buscador[0][0].capital.toString()}</h1> */}
+                {/* <h1>Capital: {JSON.stringify(buscador[0][0].capital)}</h1> */}
+                <h1>Continente: {buscador[0][0].continent}</h1>
+                <h1>Subregión: {buscador[0][0].subregion}</h1>
+                <h1>Área: {buscador[0][0].area}</h1>
+                <h1>Población: {buscador[0][0].population}</h1>
 
             </div>}
             </div>}

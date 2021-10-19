@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Pagination.css';
 
 
@@ -20,10 +20,10 @@ function Pagination({countriesPerPage, totalcountries, paginate}) {
         <div>
            
                 {
-                    pageNumbers.map(number =>{
-                      return  <NavLink exact to={number}>
+                    pageNumbers.map((number, index) =>{
+                      return  <Link key={index} to={number}>
                             <button className="myButton-pagination" onClick={()=> paginate(number)}>{number}</button>
-                        </NavLink>
+                        </Link>
                     })
                 }
            

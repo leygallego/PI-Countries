@@ -1,7 +1,8 @@
 
 
 .main-cardCountries {
-    margin-top: 150px;
+    margin-top: 15px;
+    /* margin-bottom: 150px; */
   }
   
   img{
@@ -30,6 +31,7 @@
   }
 
   .busqueda-countries{
+    margin-top: 1%;
     margin-bottom: 3%;
     margin-left: 25%;
     width: 50%;
@@ -48,4 +50,5 @@
     outline: 0;
     padding: 4px 20px 0;
     width: 75%;
+    margin-left: 8%;
   }

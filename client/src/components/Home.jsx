@@ -125,8 +125,7 @@ function Home() {
 
     return (
         <div>
-                    <br />
-                    <br /><br /><br /><br /><br /><br /><br />
+                    
             <div className="container-selectCountryCard">
                 <select className="select-CountryCard" onChange={e => { handleFilterChange(e) }}>
                     <option value={-1}>Selección de Filtros</option>

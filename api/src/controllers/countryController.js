@@ -77,7 +77,11 @@ async function getCountryByID(req, res, next) {
 
 async function countryFromDB(req, res, next) {
     try {
-       let dbCountries = await Countries.findAll()
+       let dbCountries = await Countries.findAll({
+           include:{
+                model: Activities
+           }
+       })
        .then(dbPaises =>{
            res.send(dbPaises)
        })

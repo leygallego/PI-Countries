@@ -32,6 +32,9 @@
       margin-left: 5%;
       font-size: 40px;
   }
+  .container-basicDetail span {
+    color: red;
+  }
 
   .container-container-especificDetail{
     display: grid;
@@ -43,19 +46,19 @@
     color: black;
     font-size: 18px;
     font-family: Comic Sans MS;
+  }  
+  .container-especificDetail span{
+    color: red;
+  } 
+
+  .container-activitiesDetail span{
+    color: red;
+    font-weight: bold;
   }   
 
-  /* .container-container-activitiesDetail{
-    display: grid;
-    grid-template-rows: 100px 100px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: transparent;
-    color: black;
-    font-size: 18px;
-    font-family: Comic Sans MS;
-  }    */
+  .container-activitiesDetail h2{
+    color: blue;
+  }   
 
   /* .imagenes-cardCountries{
     border: 2px solid #e7e7e7;
