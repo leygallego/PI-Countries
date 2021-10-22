@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from '../actions';
+import { dbCountriesGet } from '../actions';
 import Countries from './Countries';
 import './Home.css';
 import Pagination from './Pagination';
@@ -9,9 +9,9 @@ import Pagination from './Pagination';
 function Home() {
 
     const selector = useSelector(state => {
-        return state.countries
+        return state.dbCountries
     })
-    // console.log(selector);
+    console.log(selector);
 
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false)
@@ -27,7 +27,7 @@ function Home() {
 
     useEffect(() => {
         setLoading(true)
-        dispatch(getCountries())
+        dispatch(dbCountriesGet())
         setLoading(false)
     }, [dispatch])
 
@@ -105,10 +105,30 @@ function Home() {
                         return 0;
                     });
                     break;  
-                case "3":
+
+                    case "3":
+                    setBoolean(true)
+                    selector.sort((a, b) => {
+                        if (a.population < b.population) return 1;
+                        if (a.population > b.population) return -1;
+                        return 0;
+                    });
+                    
+                    break
+                    case "4":
+                        setBoolean(true)
+                        
+                        selector.sort((a,b)=>{
+                            if(a.population < b.population) return -1;
+                            if(a.population > b.population) return 1;
+                            return 0
+                        })
+                        break
+                case "5":
                     setBoolean(false)  
-                   break;   
-               
+                   break;
+                
+                
        
             default:
                 break;
@@ -131,7 +151,9 @@ function Home() {
                     <option value={-1}>Selección de Filtros</option>
                     <option value={1} >Ordenar Ascendente</option>
                     <option value={2} >Ordenar Descendente</option>
-                    <option value={3} >Mostrar todos los países y buscar por nombre</option>
+                    <option value={3} >Ordenar por población menor a mayor</option>
+                    <option value={4} >Ordenar por población mayor a menor</option>
+                    <option value={5} >Mostrar todos los países y buscar por nombre</option>
 
                 </select>
             </div>

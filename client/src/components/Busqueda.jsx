@@ -7,7 +7,7 @@ import  './Busqueda.css'
 function Busqueda() {
     const dispatch = useDispatch();
     const buscador = useSelector((state) => state.countryName)
-    console.log("buscador", buscador[0][0]);
+    // console.log("buscador", buscador[0][0]);
 
 
     const [countryName, setCountryName] = useState('')
@@ -58,6 +58,17 @@ function Busqueda() {
                 <h1>Subregión: {buscador[0][0].subregion}</h1>
                 <h1>Área: {buscador[0][0].area}</h1>
                 <h1>Población: {buscador[0][0].population}</h1>
+                <div className="container-activitiesBusqueda">{buscador[0][0].activities.map((e, index)=>{
+                        return (
+                            <div key={index} >
+                                <h2>Actividades</h2>
+                                <p>Nombre actividad:<span>{e.name}</span> </p>
+                                <p>Duración: <span>{e.duration}</span> </p>
+                                <p>Dificultad (de 1 a 5): <span>{e.difficulty}</span> </p>
+                                <p>Temporada: <span>{e.season}</span> </p>
+                            </div>
+                        )
+                    })}</div>
 
             </div>}
             </div>}
