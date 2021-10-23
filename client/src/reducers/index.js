@@ -1,4 +1,4 @@
-import { FETCH_COUNTRY_REQUEST, FETCH_COUNTRY_SUCCESS, FETCH_COUNTRY_FAILURE, CREATE_ACTIVITIES, DB_COUNTRIES_GET, GET_COUNTRIES, GET_COUNTRIES_BY_ID, QUIT_COUNTRIES_BY_ID } from "../actions";
+import { GET_ACTIVITIES, FETCH_COUNTRY_REQUEST, FETCH_COUNTRY_SUCCESS, FETCH_COUNTRY_FAILURE, CREATE_ACTIVITIES, DB_COUNTRIES_GET, GET_COUNTRIES, GET_COUNTRIES_BY_ID, QUIT_COUNTRIES_BY_ID } from "../actions";
 
 const initialState={
 
@@ -7,7 +7,8 @@ const initialState={
     dbCountries: [],
     countryName: [],
     loading: false,
-    error: '',   
+    error: '', 
+    activities: []  
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -58,6 +59,11 @@ export default function rootReducer(state = initialState, action) {
                  countryName: [],
                  error: action.payload
              } 
+         case GET_ACTIVITIES:
+             return {
+                 ...state,
+                 activities: action.payload
+             }    
                  
         default: return state
     }

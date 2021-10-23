@@ -9,6 +9,7 @@ export const CREATE_ACTIVITIES = 'CREATE_ACTIVITIES';
 export const FETCH_COUNTRY_REQUEST = 'FETCH_COUNTRY_REQUEST';
 export const FETCH_COUNTRY_SUCCESS = 'FETCH_COUNTRY_SUCCESS';
 export const FETCH_COUNTRY_FAILURE = 'FETCH_COUNTRY_FAILURE';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 
 
 
@@ -68,6 +69,18 @@ export function createActivities(payload){
         })
     }
 
+}
+
+export function getActivities(){
+    return function(dispatch){
+        axios.get("http://localhost:3001/activities")
+        .then(response => dispatch(
+            {
+                type: GET_ACTIVITIES,
+                payload: response.data
+            }
+        ))
+    }
 }
 
 // export function getCountryByName(name) {

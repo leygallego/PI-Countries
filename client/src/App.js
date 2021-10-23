@@ -6,9 +6,20 @@ import Landing from './components/Landing';
 import Detalle from './components/Detalle';
 import Crear from './components/Crear';
 import Busqueda from './components/Busqueda';
+import { useDispatch } from 'react-redux';
+import { dbCountriesGet, getActivities } from './actions';
+
+
 
 
 function App() {
+
+    const dispatch = useDispatch();
+
+    dispatch(dbCountriesGet());
+    dispatch(getActivities());
+
+
   return (
     <div className="App">
 
