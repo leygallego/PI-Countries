@@ -5,7 +5,7 @@ import './CountriesCard.css';
 
 
 function CountriesCard(props) {
-    console.log(props);
+    // console.log(props);
     return (
         <div className="main-cardCountries">
             <div className="container-countries">

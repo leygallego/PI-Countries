@@ -157,27 +157,7 @@ function Home() {
                 setDatosMap(selector.slice(0, 9))
 
                         break
-    //             case "5":
-    //                 setBoolean(true)  
-    //                 selector.sort((a, b) => {
-    //                     if (a.continent < b.continent) return 1;
-    //                     if (a.continent > b.continent) return -1;
-    //                     return 0;
-    //                 });
-    //                break;
-    //                case "6":
-    //                 setBoolean(true)  
-    //                 selector.sort((a, b) => {
-    //                     // console.log("mapeo actv",a.activities);
-    //                     if (a.activities < b.activities) return 1;
-    //                     if (a.activities > b.activities) return -1;
-    //                     return 0;
-    //                 });
-    //                break;
-                   
-    //                case "7":
-    //                 setBoolean(false)  
-    //                break;
+   
                 
        
             default:
@@ -191,7 +171,8 @@ function Home() {
         selector.map(el=>{
             // console.log("mapeando actividades", el);
             el.activities.map(elem=>{
-                if(elem === e.target.value){
+                // console.log("otro el", elem);
+                if(elem.id === e.target.value){
                     valor.push(el)
                 }
                 // console.log("Valor 1",valor);
