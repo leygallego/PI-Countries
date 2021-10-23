@@ -157,6 +157,18 @@ function Home() {
                 setDatosMap(selector.slice(0, 9))
 
                         break
+                        case "5":
+                            // setBoolean(true)
+                            
+                            selector.sort((a,b)=>{
+                                if(a.continent < b.continent) return 1;
+                                if(a.continent > b.continent) return -1;
+                                return 0
+                            })
+                            dispatch(setFilters(selector))
+                    setDatosMap(selector.slice(0, 9))
+    
+                            break      
    
                 
        
@@ -202,18 +214,19 @@ function Home() {
                     <option value={"2"} >Ordenar Descendente</option>
                     <option value={"3"} >Ordenar por población menor a mayor</option>
                     <option value={"4"} >Ordenar por población mayor a menor</option>
-                    {/* <option value={5} >Ordenar por Continente</option>
+                    <option value={"5"} >Filtrar por Continente</option>
+                    {/* 
                     <option value={6} >Ordenar por actividad</option>
                     <option value={7} >Mostrar todos los países y buscar por nombre</option> */}
 
                 </select>
                 
             </div>
-            <div className="button-pagination">
-                    <input className="back" type="button" value="<<<" onClick={handleBackwards} />
-                    <input className="forward" type="button" value=">>>" onClick={handleForewards} />
+            <div className="myButton-pagination">
+                    <input className="pagination-back" type="button" value="<<<" onClick={handleBackwards} />
+                    <input className="pagination-forward" type="button" value=">>>" onClick={handleForewards} />
                 </div>
-                    <div>
+                    <div className="container-selectActivityCard">
                         <select onChange={(e)=>{handleOnClickActivities(e)}} name="" id="">
                         {
                                     actividades.map((e, i) => {
@@ -225,16 +238,19 @@ function Home() {
                         </select>
                     </div>
 
-        <div>
+        <div className="render-countries">
             {
                 datosMap.map(e =>{
                     return (
-                        <CountriesCard
+                        <div className="render-countriesCard" >
+                            <CountriesCard
                         id={e.id}
                         flag={e.flag}
                         name={e.name}
                         continent={e.continent}
                         /> 
+                        </div>
+                        
                     )
                 })
             }
