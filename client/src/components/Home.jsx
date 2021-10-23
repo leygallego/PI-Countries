@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilters } from '../actions';
 import CountriesCard from './CountriesCard';
 import './Home.css';
 // import Pagination from './Pagination';
@@ -18,10 +19,54 @@ function Home() {
         return state.activities
     })
     //  console.log("mapeo activities",actividades);
+    const dispatch = useDispatch();
 
+    const limite = 9;
+    const [page, setPage] = useState(0);
+    const [limit, setLimit] = useState(limite);
+    // const [paginado, setPaginado] = useState([]);
     const [datosMap, setDatosMap] = useState([]);
+    const [buleano, setBuleano] = useState(false);
+    // const [loading, setLoading] = useState(false)
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [countriesPerPage] = useState(9);
+
+    const pagination = () => {
+        setDatosMap(
+            selector.slice(page, limit)
+        )
+    }
+
+    const handleBackwards = () => {
+
+        setPage(page - limite)
+        setLimit(limit - limite)
+
+        if ((page === 0 || page < 0) && (limit === 0 || limit < 0)) {
+            setPage(0);
+            setLimit(9);
+        }
+
+        console.log(page, limit)
+        pagination();
+    }
+
+    const handleForewards = () => {
+
+        if (limit < selector.length) {
+            setPage(limit)
+            setLimit(limit + limite)
+        }
+        // console.log(page, limit)
+        pagination();
+    }
+
+    
     setTimeout(() => {
-        setDatosMap(selector)
+        if (!buleano) {
+            setBuleano(true);
+            pagination();
+        }
     }, 100);
 
 
@@ -71,8 +116,9 @@ function Home() {
                    if (a.name < b.name) return -1;
                    if (a.name> b.name) return 1;
                    return 0
-                })
-                setDatosMap(selector.slice(0, 5))
+                });
+                dispatch(setFilters(selector))
+                setDatosMap(selector.slice(0, 9))
                 break;
     //             //filtrar descendentes
                 case "2":
@@ -83,7 +129,8 @@ function Home() {
                         if (a.name > b.name) return -1;
                         return 0;
                     });
-                    setDatosMap(selector.slice(0, 5))
+                    dispatch(setFilters(selector))
+                setDatosMap(selector.slice(0, 9))
 
                     break;  
 
@@ -94,7 +141,8 @@ function Home() {
                         if (a.population > b.population) return 1;
                         return 0;
                     });
-                    setDatosMap(selector.slice(0, 5))
+                    dispatch(setFilters(selector))
+                setDatosMap(selector.slice(0, 9))
 
                     break
                     case "4":
@@ -105,7 +153,8 @@ function Home() {
                             if(a.population > b.population) return -1;
                             return 0
                         })
-                        setDatosMap(selector.slice(0, 5))
+                        dispatch(setFilters(selector))
+                setDatosMap(selector.slice(0, 9))
 
                         break
     //             case "5":
@@ -145,10 +194,10 @@ function Home() {
                 if(elem === e.target.value){
                     valor.push(el)
                 }
-                console.log("Valor 1",valor);
+                // console.log("Valor 1",valor);
                 return null
             })
-            console.log("Valor 2",valor);
+            // console.log("Valor 2",valor);
             return null
         }) 
         
@@ -179,6 +228,10 @@ function Home() {
                 </select>
                 
             </div>
+            <div className="button-pagination">
+                    <input className="back" type="button" value="<<<" onClick={handleBackwards} />
+                    <input className="forward" type="button" value=">>>" onClick={handleForewards} />
+                </div>
                     <div>
                         <select onChange={(e)=>{handleOnClickActivities(e)}} name="" id="">
                         {
@@ -196,8 +249,10 @@ function Home() {
                 datosMap.map(e =>{
                     return (
                         <CountriesCard
-                        img={e.flag}
+                        id={e.id}
+                        flag={e.flag}
                         name={e.name}
+                        continent={e.continent}
                         /> 
                     )
                 })

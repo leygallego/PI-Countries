@@ -1,0 +1,55 @@
+
+
+.main-cardCountries {
+    margin-top: 15px;
+    
+    /* margin-bottom: 150px; */
+  }
+  
+  img{
+    width: 200px; height: 200px;
+  
+  }
+
+
+  .container-countries{
+    display: grid;
+    /* grid-template-rows: 100px 100px; */
+    grid-template-columns: repeat(3);
+    grid-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+    font-family: Comic Sans MS;
+  }    
+
+  .imagenes-cardCountries{
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    box-shadow: 0px 1px 5px 0px;
+  }
+
+  .busqueda-countries{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    width: 50%;
+    height: 55px;
+  }
+
+  .busqueda-countries input{
+    background-color: rgba(0, 0, 0, 0.383);
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    width: 25%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 75%;
+    margin-left: 8%;
+  }

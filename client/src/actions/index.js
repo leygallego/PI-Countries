@@ -10,7 +10,7 @@ export const FETCH_COUNTRY_REQUEST = 'FETCH_COUNTRY_REQUEST';
 export const FETCH_COUNTRY_SUCCESS = 'FETCH_COUNTRY_SUCCESS';
 export const FETCH_COUNTRY_FAILURE = 'FETCH_COUNTRY_FAILURE';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
-
+export const SET_FILTERS = 'SET_FILTERS';
 
 
 
@@ -93,6 +93,13 @@ export function getActivities(){
 //     }
     
 // }
+
+export const setFilters = (payload) => {
+    return {
+        type: SET_FILTERS,
+        payload: payload
+    }
+}
 
 export const fetchCountryRequest = ()=>{
     return {

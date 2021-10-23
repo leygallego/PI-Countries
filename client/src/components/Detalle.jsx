@@ -10,7 +10,7 @@ function Detalle() {
     const countryDetalle = useSelector(store=> {
         return store.country
     })
-    // console.log("Selector", countryDetalle);
+    console.log("Selector", countryDetalle);
     useEffect(()=>{
         dispatch(getCountriesById(id));
         return ()=>{dispatch(quitCountriesById())}
