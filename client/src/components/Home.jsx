@@ -105,12 +105,9 @@ function Home() {
 
 
      const handleFilterChange = (e)=>{
-    //     console.log('en el switch', e.target.value)
         
         switch (e.target.value) {
-            // filtrar ascendentes
             case "1":
-                // setBoolean(true)
 
                 selector.sort((a, b) => {
                    if (a.name < b.name) return -1;
@@ -120,10 +117,7 @@ function Home() {
                 dispatch(setFilters(selector))
                 setDatosMap(selector.slice(0, 9))
                 break;
-    //             //filtrar descendentes
-                case "2":
-                    // setBoolean(true)
-                
+                case "2":                
                     selector.sort((a, b) => {
                         if (a.name < b.name) return 1;
                         if (a.name > b.name) return -1;
@@ -131,11 +125,8 @@ function Home() {
                     });
                     dispatch(setFilters(selector))
                 setDatosMap(selector.slice(0, 9))
-
                     break;  
-
                     case "3":
-                    // setBoolean(true)
                     selector.sort((a, b) => {
                         if (a.population < b.population) return -1;
                         if (a.population > b.population) return 1;
@@ -145,9 +136,7 @@ function Home() {
                 setDatosMap(selector.slice(0, 9))
 
                     break
-                    case "4":
-                        // setBoolean(true)
-                        
+                    case "4":                        
                         selector.sort((a,b)=>{
                             if(a.population < b.population) return 1;
                             if(a.population > b.population) return -1;
@@ -158,8 +147,6 @@ function Home() {
 
                         break
                         case "5":
-                            // setBoolean(true)
-                            
                             selector.sort((a,b)=>{
                                 if(a.continent < b.continent) return 1;
                                 if(a.continent > b.continent) return -1;
@@ -167,11 +154,7 @@ function Home() {
                             })
                             dispatch(setFilters(selector))
                     setDatosMap(selector.slice(0, 9))
-    
                             break      
-   
-                
-       
             default:
                 break;
         }
@@ -181,20 +164,29 @@ function Home() {
         // console.log("select activities", e.target.value);  
         let valor = [];
         selector.map(el=>{
-            // console.log("mapeando actividades", el);
             el.activities.map(elem=>{
-                // console.log("otro el", elem);
+              
                 if(elem.id === e.target.value){
                     valor.push(el)
                 }
-                // console.log("Valor 1",valor);
                 return null
             })
-            // console.log("Valor 2",valor);
             return null
         }) 
         
-        setDatosMap(valor.slice(0, 9))
+        setDatosMap(valor)
+     }
+
+     const handleOnContinent = (e) => {
+      
+        let continente = [];
+        selector.map(el=>{
+            if(el.continent === e.target.value){
+                continente.push(el)
+            }
+            return null
+        }) 
+        setDatosMap(continente)
      }
 
 
@@ -214,19 +206,24 @@ function Home() {
                     <option value={"2"} >Ordenar Descendente</option>
                     <option value={"3"} >Ordenar por población menor a mayor</option>
                     <option value={"4"} >Ordenar por población mayor a menor</option>
-                    <option value={"5"} >Filtrar por Continente</option>
-                    {/* 
-                    <option value={6} >Ordenar por actividad</option>
-                    <option value={7} >Mostrar todos los países y buscar por nombre</option> */}
-
+                    <option value={"5"} >Ordenar por Continente</option>
                 </select>
                 
             </div>
-            <div className="myButton-pagination">
-                    <input className="pagination-back" type="button" value="<<<" onClick={handleBackwards} />
-                    <input className="pagination-forward" type="button" value=">>>" onClick={handleForewards} />
-                </div>
+            <div className="container-continenteCard">
+                <select className="select-continenteCard" onChange={e => { handleOnContinent(e) }}>
+                    <option value={-1}>Filtro por continente</option>
+                    <option value={"Americas"} >América</option>
+                    <option value={"Europe"} >Europa</option>
+                    <option value={"Africa"} >África</option>
+                    <option value={"Oceania"} >Oceanía</option>
+                    <option value={"Asia"} >Asia</option>
+                </select>
+                
+            </div>
+            
                     <div className="container-selectActivityCard">
+                    <h3>Filtrar por actividad</h3>
                         <select onChange={(e)=>{handleOnClickActivities(e)}} name="" id="">
                         {
                                     actividades.map((e, i) => {
@@ -237,6 +234,10 @@ function Home() {
 
                         </select>
                     </div>
+                    <div className="myButton-pagination">
+                    <input className="pagination-back" type="button" value="<<< Atrás" onClick={handleBackwards} />
+                    <input className="pagination-forward" type="button" value="Adelante >>>" onClick={handleForewards} />
+                </div>
 
         <div className="render-countries">
             {
