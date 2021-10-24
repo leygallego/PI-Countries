@@ -194,7 +194,7 @@ function Home() {
             return null
         }) 
         
-        setDatosMap(valor.slice(0, 5))
+        setDatosMap(valor.slice(0, 9))
      }
 
 

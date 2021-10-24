@@ -126,10 +126,12 @@ export const fetchCountryFailure = (error) => {
         dispatch(fetchCountryRequest());
         axios.get(`http://localhost:3001/countries/search?name=${name}`)
         .then(response => {
+            console.log("DATA", response.data);
             dispatch(fetchCountrySuccess([response.data]));
         })
         .catch(error => {
-            dispatch(fetchCountryFailure("No se encontró el País", error))
+            console.log("ERROR", "no existe");
+            dispatch(fetchCountryFailure("no existe el país"))
         })
 
     }

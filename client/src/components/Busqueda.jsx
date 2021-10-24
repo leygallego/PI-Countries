@@ -7,7 +7,7 @@ import  './Busqueda.css'
 function Busqueda() {
     const dispatch = useDispatch();
     const buscador = useSelector((state) => state.countryName)
-    // console.log("buscador", buscador[0][0]);
+    console.log("buscador", buscador);
 
 
     const [countryName, setCountryName] = useState('')
@@ -41,41 +41,42 @@ function Busqueda() {
 
             </div>
 
+            {
+                buscador[0][0] ?  <div><div className="main-resultado">
+
+                { buscador.loading &&  <div className="resultado-warning">Buscando...</div>}
+                { 
+                
+                <div className="resultado-mostrado"> 
+                   <img className="busqueda-imagen" src={buscador[0][0].flag} alt={buscador[0][0].name} />
+                   <div className="resultado-mostrado">
+                   <h1>País: {buscador[0][0].name}</h1>
+                   <h1>ID: {buscador[0][0].id}</h1>
+                   <h1>Capital: {buscador[0][0].capital}</h1>
+                   <h1>Continente: {buscador[0][0].continent}</h1>
+                   <h1>Subregión: {buscador[0][0].subregion}</h1>
+                   <h1>Área: {buscador[0][0].area}</h1>
+                   <h1>Población: {buscador[0][0].population}</h1>
+                   <div className="container-activitiesBusqueda">{buscador[0][0].activities.map((e, index)=>{
+                           return (
+                               <div key={index} >
+                                   <h2>Actividades</h2>
+                                   <p>Nombre actividad:<span>{e.name}</span> </p>
+                                   <p>Duración: <span>{e.duration}</span> </p>
+                                   <p>Dificultad (de 1 a 5): <span>{e.difficulty}</span> </p>
+                                   <p>Temporada: <span>{e.season}</span> </p>
+                               </div>
+                           )
+                       })}</div>
+                
+                </div> 
+                
+                
+                </div> }
+                </div></div> : <div><h1>No existe el país</h1></div>
+            }
+
             
-
-             <div className="main-resultado">
-
-             { buscador.loading &&  <div className="resultado-warning">Buscando...</div>}
-             { buscador.length >= 1 && <div className="resultado-mostrado">
-                <img className="busqueda-imagen" src={buscador[0][0].flag} alt={buscador[0][0].name} />
-                { buscador.length >= 1 && <div className="resultado-mostrado">
-                <h1>País: {buscador[0][0].name}</h1>
-                <h1>ID: {buscador[0][0].id}</h1>
-                <h1>Capital: {buscador[0][0].capital}</h1>
-                {/* <h1>Capital: {buscador[0][0].capital.toString()}</h1> */}
-                {/* <h1>Capital: {JSON.stringify(buscador[0][0].capital)}</h1> */}
-                <h1>Continente: {buscador[0][0].continent}</h1>
-                <h1>Subregión: {buscador[0][0].subregion}</h1>
-                <h1>Área: {buscador[0][0].area}</h1>
-                <h1>Población: {buscador[0][0].population}</h1>
-                <div className="container-activitiesBusqueda">{buscador[0][0].activities.map((e, index)=>{
-                        return (
-                            <div key={index} >
-                                <h2>Actividades</h2>
-                                <p>Nombre actividad:<span>{e.name}</span> </p>
-                                <p>Duración: <span>{e.duration}</span> </p>
-                                <p>Dificultad (de 1 a 5): <span>{e.difficulty}</span> </p>
-                                <p>Temporada: <span>{e.season}</span> </p>
-                            </div>
-                        )
-                    })}</div>
-
-            </div>}
-            </div>}
-
-
-
-             </div>
 
         </div>
     )

@@ -5,7 +5,10 @@ const initialState={
     countries: [],
     country: [],
     dbCountries: [],
-    countryName: [],
+    countryName: [
+        []
+       
+    ],
     loading: false,
     error: '', 
     activities: []  
@@ -56,7 +59,9 @@ export default function rootReducer(state = initialState, action) {
              return{
                  ...state,
                  loading: false,
-                 countryName: [],
+                 countryName: [
+                []
+            ],
                  error: action.payload
              } 
          case GET_ACTIVITIES:
