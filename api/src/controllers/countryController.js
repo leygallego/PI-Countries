@@ -17,10 +17,6 @@ var Sequelize = require("sequelize");
                 return Promise.all(
                     pais.data.map(e=>{
                             
-                            // console.log("Mapeando",  e.capital[0]  !== undefined ? e.capital[0] : "sinCapital" );
-                            // console.log("mapeando3", JSON.stringify(e.capital));
-                            // console.log("Mapeando2",  e.capital  === undefined ? "":  e.capital[0]);
-                            // console.log("Subregion", e.subregion === undefined ? "Sin Región" : e.subregion);
                             return Countries.findOrCreate({
                                 where: {
                                     id: e.cca3,
@@ -66,7 +62,7 @@ async function getCountryByID(req, res, next) {
                     model: Activities
                 }
             })
-            console.log("información", countryInfo);
+            // console.log("información", countryInfo);
             res.send(countryInfo)
         } else {
             res.send("No hay país con ese id")
@@ -112,7 +108,6 @@ async function searchCountry(req, res, next){
                 model: Activities
            }
         })
-        // console.log("Busqueda",pais);
         res.send(pais)
 
     } catch (error) {

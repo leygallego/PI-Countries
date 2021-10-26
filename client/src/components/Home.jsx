@@ -241,9 +241,9 @@ function Home() {
 
         <div className="render-countries">
             {
-                datosMap.map(e =>{
+                datosMap.map((e, index) =>{
                     return (
-                        <div className="render-countriesCard" >
+                        <div key={index} className="render-countriesCard" >
                             <CountriesCard
                         id={e.id}
                         flag={e.flag}
