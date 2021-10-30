@@ -73,7 +73,7 @@ function Busqueda() {
                 
                 
                 </div> }
-                </div></div> : <div><h1>No existe el país</h1></div>
+                </div></div> : <div className="mensaje-busqueda"><h1>No existe el país</h1></div>
             }
 
             

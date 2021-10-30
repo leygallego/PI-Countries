@@ -25,3 +25,9 @@
 .landing-myButton:active {
     background: url('../images/boton.png') no-repeat;
 }
+
+.landing-title{
+    font-family: Comic Sans MS;
+    color: white;
+    font-size: 20px;
+}

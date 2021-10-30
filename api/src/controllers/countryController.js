@@ -91,6 +91,32 @@ async function countryFromDB(req, res, next) {
     
 }
 
+async function addCountry(req, res, next) {
+    
+            //destructuro los items del país que voy a crear que vienen por body
+        const { id, name, flag, continent, capital, subregion, area, population } = req.body;
+        let newCountry = {
+            id,
+            name,
+            flag,
+            continent,
+            capital,
+            subregion,
+            area,
+            population
+        }
+        Countries.create(newCountry)
+        .then(country=>{
+            res.send(country)
+        })
+        .catch((err)=>{
+            next(err)
+        })
+
+    
+        
+}
+
 async function searchCountry(req, res, next){
     try {
         const { name } = req.query;
@@ -119,6 +145,7 @@ module.exports = {
     getCountries,
     getCountryByID,
     countryFromDB,
-    searchCountry
+    searchCountry,
+    addCountry
 }
 

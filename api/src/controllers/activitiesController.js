@@ -34,8 +34,11 @@ async function getActivities(req, res, next) {
         }
         Activities.create(newActivity)
         .then(activity => {
-            activity.addCountries(countries)
-            res.json(activity)
+          return  activity.addCountries(countries)
+            .then(()=>{
+                res.json(activity)
+            })
+            
         })
 
     // const newActivity = await Activities.create({

@@ -23,7 +23,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: transparent;
     color: black;
-    font-size: 18px;
+    font-size: 25px;
     font-family: Comic Sans MS;
     margin-left: 0%;
   }    
@@ -44,7 +44,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: transparent;
     color: black;
-    font-size: 18px;
+    font-size: 25px;
     font-family: Comic Sans MS;
   }  
   .container-especificDetail span{
@@ -66,3 +66,18 @@
     padding: .5rem;
     box-shadow: 0px 1px 5px 0px;
   } */
+
+  .detalles{
+    margin-left: 2%;
+    margin-right: 2%;
+    display: grid;
+    /* grid-template-rows: 100px 100px; */
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.686);
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    font-family: Comic Sans MS;
+    margin-bottom: 1%;
+  }

@@ -41,7 +41,7 @@ function Detalle() {
 
                     <div className="container-activitiesDetail">{countryDetalle.activities.map((e, index)=>{
                         return (
-                            <div key={index} >
+                            <div className="detalles" key={index} >
                                 <h2>Actividades</h2>
                                 <p>Nombre actividad:<span>{e.name}</span> </p>
                                 <p>Duración: <span>{e.duration}</span> </p>
