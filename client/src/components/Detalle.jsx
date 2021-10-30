@@ -24,6 +24,7 @@ function Detalle() {
                 
                 countryDetalle.name ?
                 <div className="container-detail">
+                    <div className="losDetalles" >
                     <div className="container-basicDetail">
                     <h1>Detalle de <span>{countryDetalle.name}</span> </h1>
                     <img src={countryDetalle.flag} alt={`imagen de ${countryDetalle.name}`} />
@@ -37,6 +38,9 @@ function Detalle() {
                     <p>Población <span>{countryDetalle.population}</span> </p>
                     <p>Continente <span>{countryDetalle.continent}</span> </p>
                     </div>
+
+                    </div>
+                    
                     
 
                     <div className="container-activitiesDetail">{countryDetalle.activities.map((e, index)=>{
