@@ -43,6 +43,7 @@ function Crear() {
             countries: []
 
         })
+        alert("Enviado correctamente")
     }
 
     const handleOnChangeSelect = (e) => {
